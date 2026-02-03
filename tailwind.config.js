@@ -4,21 +4,39 @@ module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        nordic: {
+          50: "#eef1f6",
+          100: "#d9e0ea",
+          200: "#b3c0d4",
+          300: "#8da0bd",
+          400: "#6780a7",
+          500: "#4f6a90", // Primary
+          600: "#3a516d",
+          700: "#2a3b4e",
+          800: "#1a252f",
+          900: "#0d1216",
+        },
+        accent: {
+          light: "#a7d9f7", // For highlights in light mode
+          dark: "#60a5fa",  // For highlights in dark mode
+        },
+      },
       backgroundImage: {
-        clear: "linear-gradient(to bottom, #fef9c3, #60a5fa)",
-        "dark-clear": "linear-gradient(to bottom, #4a4e69, #22223b)",
-        clouds: "linear-gradient(to bottom, #e5e7eb, #6b7280)",
-        "dark-clouds": "linear-gradient(to bottom, #6b7280, #1f2937)",
-        rain: "linear-gradient(to bottom, #93c5fd, #1e3a8a)",
-        "dark-rain": "linear-gradient(to bottom, #4a4e69, #1e3a8a)",
-        drizzle: "linear-gradient(to bottom, #cbd5e1, #64748b)",
-        "dark-drizzle": "linear-gradient(to bottom, #64748b, #1f2937)",
-        thunder: "linear-gradient(to bottom, #a78bfa, #1f2937)",
-        "dark-thunder": "linear-gradient(to bottom, #4a044e, #1f2937)",
-        snow: "linear-gradient(to bottom, #f8fafc, #93c5fd)",
-        "dark-snow": "linear-gradient(to bottom, #6b7280, #1e3a8a)",
-        mist: "linear-gradient(to bottom, #e2e8f0, #94a3b8)",
-        "dark-mist": "linear-gradient(to bottom, #64748b, #1f2937)",
+        clear: "linear-gradient(to bottom, #d9e0ea, #a7d9f7)", // Light blue skies
+        "dark-clear": "linear-gradient(to bottom, #1a252f, #3a516d)", // Dark moody skies
+        clouds: "linear-gradient(to bottom, #eef1f6, #b3c0d4)", // Light gray clouds
+        "dark-clouds": "linear-gradient(to bottom, #2a3b4e, #4f6a90)", // Dark gray clouds
+        rain: "linear-gradient(to bottom, #b3c0d4, #6780a7)", // Muted rainy blues
+        "dark-rain": "linear-gradient(to bottom, #1a252f, #2a3b4e)", // Deep rainy blues
+        drizzle: "linear-gradient(to bottom, #d9e0ea, #b3c0d4)", // Lighter drizzle grays
+        "dark-drizzle": "linear-gradient(to bottom, #2a3b4e, #3a516d)", // Darker drizzle grays
+        thunder: "linear-gradient(to bottom, #8da0bd, #4f6a90)", // Stormy purples/blues
+        "dark-thunder": "linear-gradient(to bottom, #0d1216, #1a252f)", // Very dark stormy
+        snow: "linear-gradient(to bottom, #eef1f6, #d9e0ea)", // Snowy whites
+        "dark-snow": "linear-gradient(to bottom, #3a516d, #4f6a90)", // Dark snowy blues
+        mist: "linear-gradient(to bottom, #d9e0ea, #b3c0d4)", // Misty grays
+        "dark-mist": "linear-gradient(to bottom, #2a3b4e, #3a516d)", // Dark misty grays
       },
     },
   },
