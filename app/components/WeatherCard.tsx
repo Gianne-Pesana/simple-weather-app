@@ -7,7 +7,7 @@ export default function WeatherCard({ weather }: { weather: any }) {
     <div
       className="bg-black/10 dark:bg-white/10 backdrop-blur-md 
                     text-black dark:text-white rounded-xl p-6 
-                    w-full max-w-md mt-6 text-center shadow-lg"
+                    h-full text-center shadow-lg"
     >
       <h2 className="text-3xl font-semibold">{weather.name}</h2>
 

@@ -11,7 +11,7 @@ export default function WeatherDetails({ weather }: { weather: any }) {
     <div
       className="bg-black/10 dark:bg-white/10 backdrop-blur-md 
                     text-black dark:text-white rounded-xl p-6 
-                    w-full max-w-md mt-6 grid grid-cols-2 gap-4 shadow-lg"
+                    h-full grid grid-cols-2 gap-4 shadow-lg"
     >
       <DetailItem icon={<Droplets className="w-5 h-5" />} label="Humidity" value={`${weather.main.humidity}%`} />
       <DetailItem icon={<Wind className="w-5 h-5" />} label="Wind Speed" value={`${weather.wind.speed} m/s`} />

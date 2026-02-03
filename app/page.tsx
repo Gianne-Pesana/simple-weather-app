@@ -51,7 +51,7 @@ export default function Page() {
         <ThemeToggle />
       </div>
 
-      <div className="flex flex-col items-center justify-center min-h-screen p-4 space-y-6">
+      <div className="flex flex-col items-center justify-center min-h-screen p-4 space-y-6 max-w-screen-lg mx-auto">
         <SearchBar onSearch={search} defaultValue={lastCity?.name || ""} />
 
         {loading && (
@@ -72,10 +72,10 @@ export default function Page() {
         )}
 
         {!loading && weather && (
-          <>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
             <WeatherCard weather={weather} />
             <WeatherDetails weather={weather} />
-          </>
+          </div>
         )}
 
         {!loading && !weather && !error && (
