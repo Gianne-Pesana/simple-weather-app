@@ -9,15 +9,16 @@ const nextConfig = {
         pathname: "/img/wn/**",
       },
     ],
-
-    eslint: {
-      ignoreDuringBuilds: true,
-    },
-
-    typescript: {
-      ignoreBuildErrors: true,
-    },
   },
+
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   transpilePackages: ["lucide-react"],
 };
 
