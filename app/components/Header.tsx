@@ -71,7 +71,7 @@ export default function Header() {
             alt="AtmosG Logo"
             width={48}
             height={48}
-            className="w-10 h-10 stroke-black dark:stroke-white fill-black dark:fill-white"
+            className="w-10 h-10 stroke-black/80 dark:stroke-white fill-black/80 dark:fill-white"
           />
           <span className="text-2xl font-bold">AtmosG</span>
         </Link>

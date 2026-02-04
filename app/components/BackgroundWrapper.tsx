@@ -73,8 +73,8 @@ export default function BackgroundWrapper({
       )}
 
       {isCloudy && (
-        <div className="absolute inset-0 z-[1]"> {/* Z-index to place above main background but below content */}
-          {generateClouds(20)} {/* Generate 20 clouds */}
+        <div className="absolute inset-0 z-[1]"> 
+          {generateClouds(25)}
         </div>
       )}
 

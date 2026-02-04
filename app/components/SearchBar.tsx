@@ -84,7 +84,7 @@ export default function SearchBar({
             onChange={(e) => setCity(e.target.value)}
             placeholder="Search city…"
             className="w-full px-4 py-2 rounded-md bg-black/10 dark:bg-white/10
-                     text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-300
+                     text-black dark:text-white placeholder-gray-700 dark:placeholder-gray-300
                      outline-none backdrop-blur-md"
           />
           {loading && (
