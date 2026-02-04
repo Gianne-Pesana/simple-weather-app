@@ -18,7 +18,7 @@ module.exports = {
           900: "#0d1216",
         },
         accent: {
-          light: "#a7d9f7", // For highlights in light mode
+          light: "#60a5fa", // For highlights in light mode
           dark: "#60a5fa",  // For highlights in dark mode
         },
       },

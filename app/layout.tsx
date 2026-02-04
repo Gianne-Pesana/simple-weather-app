@@ -3,8 +3,8 @@
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-// Removed BackgroundWrapper import
-import Header from "./components/Header"; // Import the new Header component
+import Header from "./components/Header";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 
 export default function RootLayout({
@@ -15,8 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
-        <Header /> {/* Use the new Header component */}
+        <Header />
         {children}
+        <ScrollToTopButton />
       </body>
     </html>
   );

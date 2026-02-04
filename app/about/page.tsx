@@ -8,7 +8,7 @@ export default function AboutPage() {
       {" "}
       {/* Wrap with BackgroundWrapper and set default condition */}
       <div className="container mx-auto p-4 md:p-8 text-gray-900 dark:text-gray-100">
-        <div className="flex flex-col items-center justify-center space-y-8 mt-8">
+        <div className="flex flex-col items-center justify-center space-y-8 mt-24">
           {" "}
           {/* Adjusted margin-top for header */}
           {/* About Container */}

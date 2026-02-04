@@ -2,24 +2,72 @@
 
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
-import Image from "next/image"; // Import Image for SVG
-import { useState } from "react"; // Import useState
-import { Menu, X } from "lucide-react"; // Import icons for hamburger menu
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation"; // Import usePathname
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const pathname = usePathname(); // Get current pathname
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768);
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      handleResize();
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    const scrollThreshold = isSmallScreen ? 50 : 100;
+
+    const controlNavbar = () => {
+      if (typeof window !== 'undefined') {
+        if (window.scrollY > lastScrollY && window.scrollY > scrollThreshold) {
+          setIsVisible(false);
+        } else if (window.scrollY < scrollThreshold) {
+          setIsVisible(true);
+        }
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY, isSmallScreen]);
+
+  const getLinkClasses = (href: string) => {
+    const isActive = pathname === href;
+    return `text-lg font-medium transition-colors duration-200 
+            ${isActive ? 'text-accent-light dark:text-accent-dark' : 'text-black dark:text-white'} 
+            hover:text-accent-light dark:hover:text-accent-dark`;
+  };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 p-4 md:p-6 bg-transparent">
+    <header className={`fixed top-0 left-0 w-full z-50 p-4 md:p-6 bg-transparent transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       <nav className="container mx-auto flex items-center justify-between">
         {/* Logo - Always visible and centered (or left-aligned for mobile) */}
         <Link
           href="/"
-          className="flex items-center space-x-2 text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200"
-          onClick={() => setIsMobileMenuOpen(false)} // Close menu on logo click
+          className="flex items-center space-x-2 text-black dark:text-white hover:text-accent-light dark:hover:text-accent-dark transition-colors duration-200"
+          onClick={() => setIsMobileMenuOpen(false)}
         >
           <Image
-            src="/assets/weather_icon.svg" // Using weather-icon.svg as placeholder
+            src="/assets/weather_icon.svg"
             alt="AtmosG Logo"
             width={48}
             height={48}
@@ -30,16 +78,10 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-4">
-          <Link
-            href="/"
-            className="text-black dark:text-white text-lg font-medium hover:text-gray-700 dark:hover:text-gray-300"
-          >
+          <Link href="/" className={getLinkClasses("/")}>
             Weather
           </Link>
-          <Link
-            href="/about"
-            className="text-black dark:text-white text-lg font-medium hover:text-gray-700 dark:hover:text-gray-300"
-          >
+          <Link href="/about" className={getLinkClasses("/about")}>
             About
           </Link>
           <ThemeToggle />
@@ -60,14 +102,14 @@ export default function Header() {
           <div className="container mx-auto flex flex-col items-center space-y-6">
             <Link
               href="/"
-              className="text-black dark:text-white text-lg font-medium hover:text-gray-700 dark:hover:text-gray-300 w-full text-center"
+              className={`${getLinkClasses("/")} w-full text-center`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Weather
             </Link>
             <Link
               href="/about"
-              className="text-black dark:text-white text-lg font-medium hover:text-gray-700 dark:hover:text-gray-300 w-full text-center"
+              className={`${getLinkClasses("/about")} w-full text-center`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About
