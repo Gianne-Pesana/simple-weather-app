@@ -8,3 +8,12 @@ body {
   margin: 0;
   padding: 0;
 }
+
+@keyframes cloud-move {
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateX(200vw); /* Move fully across and off-screen right */
+  }
+}

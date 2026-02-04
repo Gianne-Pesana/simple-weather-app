@@ -36,10 +36,10 @@ export default function BackgroundWrapper({
     for (let i = 0; i < count; i++) {
       const img = cloudImages[i % cloudImages.length]; // Cycle through provided images
       const size = Math.random() * 100 + 100; // Random size between 100px and 200px
-      const top = Math.random() * 80; // Random top position
-      const leftStart = Math.random() * 100; // Initial left position
+      const top = Math.random() * 80; // Random top position (0-80vh)
+      const initialLeft = Math.random() * 200 - 100; // Random initial left position (-100vw to 100vw)
       const animationDuration = Math.random() * 80 + 120; // Animation duration between 120s and 200s
-      const animationDelay = Math.random() * -100; // Random negative delay to start at various points
+      const animationDelay = Math.random() * animationDuration * -1; // Random negative delay up to full duration
 
       clouds.push(
         <Image
@@ -51,7 +51,7 @@ export default function BackgroundWrapper({
           className="absolute z-[1] opacity-70" // opacity for clouds
           style={{
             top: `${top}vh`,
-            left: `${leftStart}vw`,
+            left: `${initialLeft}vw`, // Set initial left position
             animation: `cloud-move ${animationDuration}s linear infinite`,
             animationDelay: `${animationDelay}s`,
           }}
@@ -74,7 +74,7 @@ export default function BackgroundWrapper({
 
       {isCloudy && (
         <div className="absolute inset-0 z-[1]"> {/* Z-index to place above main background but below content */}
-          {generateClouds(20)} {/* Generate 20 clouds */}
+          {generateClouds(20)} {/* Generate 20 clouds for continuous flow */}
         </div>
       )}
 
