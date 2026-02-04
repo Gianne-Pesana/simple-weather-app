@@ -67,7 +67,7 @@ export default function Header() {
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <Image
-            src="/assets/weather_icon.svg"
+            src="/assets/weather-icon.svg"
             alt="AtmosG Logo"
             width={48}
             height={48}
