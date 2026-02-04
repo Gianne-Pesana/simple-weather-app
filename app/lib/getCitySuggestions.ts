@@ -3,7 +3,7 @@ export async function getCitySuggestions(query: string) {
   if (!query || !key) return [];
 
   const res = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${key}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${key}`
   );
 
   if (!res.ok) return [];
